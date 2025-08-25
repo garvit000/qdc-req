@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qwiklab Developers Club, Recruitment open!</title>
   <!-- Demon Slayer themed fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+JP:wght@600;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -40,23 +39,6 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">鬼殺隊</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#timeline">Timeline</a></li>
-                <li><a href="#contact">Join</a></li>
-                <li><a href="https://qdcsrmist.in" target="_blank">Club</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu" id="mobileMenu">
-            <button class="mobile-close" id="mobileClose">
-                <i class="fas fa-times"></i>
-            </button>
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -176,8 +158,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <input type="number" id="reg" name="reg" placeholder=" " min="15" max="25" required>
-                    <label for="reg">Reg. No:</label>
+                    <input type="number" id="age" name="age" placeholder=" " min="15" max="25" required>
+                    <label for="age">Age</label>
                 </div>
                 
                 <div class="form-group">
@@ -649,39 +631,6 @@
             console.table(applications);
             return applications;
         };
-        
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileClose = document.getElementById('mobileClose');
-        
-        if (mobileMenuBtn && mobileMenu && mobileClose) {
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileMenu.classList.add('show');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            });
-            
-            mobileClose.addEventListener('click', function() {
-                mobileMenu.classList.remove('show');
-                document.body.style.overflow = ''; // Restore scrolling
-            });
-            
-            // Close mobile menu when clicking on a link
-            mobileMenu.querySelectorAll('a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('show');
-                    document.body.style.overflow = '';
-                });
-            });
-            
-            // Close mobile menu when clicking outside
-            mobileMenu.addEventListener('click', function(e) {
-                if (e.target === mobileMenu) {
-                    mobileMenu.classList.remove('show');
-                    document.body.style.overflow = '';
-                }
-            });
-        }
 
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
