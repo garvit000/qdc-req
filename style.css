@@ -405,12 +405,14 @@ body, html {
 
         /* About Section */
         .about {
-            background: transparent;
+            background: rgba(10, 10, 15, 0.65);
             margin: 2rem 0;
             border-radius: 20px;
             border: 1px solid rgba(0, 212, 255, 0.2);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .about::before {
@@ -470,11 +472,17 @@ body, html {
             object-position: center;
             filter: saturate(1.05) contrast(1.05);
             transition: transform 0.5s ease, filter 0.5s ease;
+            animation: gentleFloat 4s ease-in-out infinite alternate;
         }
 
         .about-visual:hover .about-image {
             transform: scale(1.05);
             filter: saturate(1.15) contrast(1.1);
+        }
+
+        @keyframes gentleFloat {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-8px) scale(1.02); }
         }
 
         .about-visual::before {
@@ -966,22 +974,28 @@ body, html {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             color: var(--text-gray);
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,0.12);
             text-decoration: none;
             transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+            font-size: 1.2rem;
+        }
+
+        .footer-icon i {
+            font-size: 1.3rem;
+            line-height: 1;
         }
 
         .footer-icon:hover {
             transform: translateY(-3px) scale(1.07);
             color: var(--accent-blue);
-            background: rgba(0, 212, 255, 0.09);
-            border-color: rgba(0, 212, 255, 0.25);
-            box-shadow: 0 12px 28px rgba(0, 212, 255, 0.18);
+            background: rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 12px 28px rgba(0, 212, 255, 0.25);
         }
 
         .footer-text {
