@@ -921,9 +921,9 @@ body, html {
 
         /* Footer */
         .footer {
-            background: var(--primary-dark);
-            padding: 3rem 2rem 2rem;
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            background: transparent;
+            padding: 2rem 2rem 1.5rem;
+            border-top: none;
             text-align: center;
             position: relative;
         }
@@ -931,31 +931,48 @@ body, html {
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 1rem 1.25rem;
+            border-radius: 16px;
+            background: rgba(10, 10, 15, 0.45);
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35), 0 0 25px rgba(0,212,255,0.12);
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1.25rem;
+            margin-bottom: 1rem;
         }
 
-        .footer-links a {
+        .footer-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
             color: var(--text-gray);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255,255,255,0.08);
             text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
         }
 
-        .footer-links a:hover {
+        .footer-icon:hover {
+            transform: translateY(-3px) scale(1.07);
             color: var(--accent-blue);
-            transform: translateY(-5px) scale(1.2);
-            text-shadow: 0 0 15px var(--glow-blue);
+            background: rgba(0, 212, 255, 0.09);
+            border-color: rgba(0, 212, 255, 0.25);
+            box-shadow: 0 12px 28px rgba(0, 212, 255, 0.18);
         }
 
         .footer-text {
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            color: #d9e9ff;
+            font-size: 0.95rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.35);
         }
 
         /* Success Message */
