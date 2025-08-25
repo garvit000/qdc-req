@@ -20,8 +20,12 @@
   <div id="background-container">
     <img id="akaza-eye" src="./akaza-eye.jpg" alt="Akaza Eye">
     <img id="castle-image" src="./infinity_castle.JPG" alt="Infinity Castle">
-    <video id="castle-video" src="./back.mp4" muted autoplay loop playsinline></video>
-
+    <video id="castle-video" src="./back.mp4" muted autoplay loop playsinline preload="auto"></video>
+    
+    <!-- Video play button overlay (hidden by default) -->
+    <div id="video-play-overlay" class="video-play-overlay">
+      <button id="video-play-btn" class="video-play-btn">▶️ Play Video</button>
+    </div>
   </div>
   
   
@@ -529,6 +533,84 @@
         // Console art
         console.log('%c🗡️ DEMON SLAYER CORPS RECRUITMENT SYSTEM ⚔️', 'color: #00d4ff; font-size: 16px; font-weight: bold;');
         console.log('%cApplications stored:', 'color: #ffa502;', applications.length);
+
+        // Video autoplay handling
+        function handleVideoAutoplay() {
+            const video = document.getElementById('castle-video');
+            const playOverlay = document.getElementById('video-play-overlay');
+            
+            if (video) {
+                // Try to play the video
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Video autoplay successful');
+                        // Hide play button if it was shown
+                        if (playOverlay) {
+                            playOverlay.classList.remove('show');
+                        }
+                    }).catch(error => {
+                        console.log('Video autoplay failed:', error);
+                        // Show play button overlay
+                        if (playOverlay) {
+                            playOverlay.classList.add('show');
+                        }
+                    });
+                }
+            }
+        }
+
+        // Handle video when it becomes visible
+        function handleVideoVisibility() {
+            const video = document.getElementById('castle-video');
+            const playOverlay = document.getElementById('video-play-overlay');
+            
+            if (video && video.readyState >= 2) {
+                // Video is loaded and ready
+                if (video.style.opacity === '1' || getComputedStyle(video).opacity === '1') {
+                    video.play().then(() => {
+                        // Hide play button on successful play
+                        if (playOverlay) {
+                            playOverlay.classList.remove('show');
+                        }
+                    }).catch(e => {
+                        console.log('Video play failed:', e);
+                        // Show play button if play fails
+                        if (playOverlay) {
+                            playOverlay.classList.add('show');
+                        }
+                    });
+                }
+            }
+        }
+
+        // Handle manual video play button click
+        document.addEventListener('DOMContentLoaded', function() {
+            const playBtn = document.getElementById('video-play-btn');
+            const video = document.getElementById('castle-video');
+            const playOverlay = document.getElementById('video-play-overlay');
+            
+            if (playBtn && video) {
+                playBtn.addEventListener('click', function() {
+                    video.play().then(() => {
+                        console.log('Manual video play successful');
+                        // Hide play button
+                        if (playOverlay) {
+                            playOverlay.classList.remove('show');
+                        }
+                    }).catch(e => {
+                        console.log('Manual video play failed:', e);
+                    });
+                });
+            }
+        });
+
+        // Initialize video handling
+        window.addEventListener('load', handleVideoAutoplay);
+        
+        // Check video visibility periodically
+        setInterval(handleVideoVisibility, 1000);
 
         // Development helper
         window.viewApplications = function() {

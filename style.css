@@ -49,10 +49,51 @@ body, html {
 #castle-video {
   object-position: center;
   filter: brightness(0.8) contrast(1.2);
+  z-index: -1;
 }
 
 #castle-image {
   filter: brightness(0.7) contrast(1.1);
+  z-index: -1;
+}
+
+#akaza-eye {
+  z-index: -1;
+}
+
+/* Video play button overlay */
+.video-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: none;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.video-play-overlay.show {
+  display: block;
+}
+
+.video-play-btn {
+  background: linear-gradient(45deg, var(--accent-blue), var(--accent-red));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.video-play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 212, 255, 0.5);
 }
 
 .content {
