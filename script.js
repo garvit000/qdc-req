@@ -21,6 +21,8 @@ gsap.to("#castle-image", {
     scrub: true,
   }
 });
+
+// Fade in the video
 gsap.to("#castle-video", {
   opacity: 1,
   scrollTrigger: {
@@ -30,14 +32,30 @@ gsap.to("#castle-video", {
     scrub: true,
   }
 });
-// Fade in and start playing the video after the image is visible
+
+// Control video playback based on scroll position
 ScrollTrigger.create({
   trigger: "body",
   start: "70% top",
-  onEnter: () => {
-    gsap.to("#castle-video", { opacity: 1, duration: 2 });
-    gsap.to("#castle-image", { opacity: 0, duration: 2 }); // hide image
+  end: "bottom bottom",
+  scrub: true,
+  onUpdate: (self) => {
     const video = document.getElementById("castle-video");
-    video.play();
+    if (video && video.duration) {
+      // Calculate video time based on scroll progress
+      const progress = self.progress;
+      const targetTime = progress * video.duration;
+      
+      // Only update if there's a significant difference to avoid jitter
+      if (Math.abs(video.currentTime - targetTime) > 0.1) {
+        video.currentTime = targetTime;
+      }
+    }
+  },
+  onEnter: () => {
+    const video = document.getElementById("castle-video");
+    if (video) {
+      video.pause(); // Pause auto-play since we're controlling it manually
+    }
   }
 });
