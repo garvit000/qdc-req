@@ -248,6 +248,14 @@
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            // Floating state when page is scrolled a bit
+            if (window.scrollY > 8) {
+                navbar.classList.add('floating');
+            } else {
+                navbar.classList.remove('floating');
+            }
+            // Hide on scroll down, show on scroll up
             if (window.scrollY > lastScrollY && window.scrollY > 100) {
                 navbar.style.transform = 'translateY(-100%)';
             } else {
