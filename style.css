@@ -16,7 +16,7 @@ body, html {
   padding: 0;
   height: 300vh; /* Make the page scrollable */
   overflow-x: hidden;
-  font-family: Arial, sans-serif;
+  font-family: 'Zen Kaku Gothic New', Arial, sans-serif;
 }
 
 #background-container {
@@ -177,8 +177,9 @@ body, html {
             transform: translateY(-2px);
         }
 
+        /* Logo font closer to DS aesthetic */
         .logo {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Noto Serif JP', 'Zen Kaku Gothic New', serif;
             font-size: 1.8rem;
             font-weight: 900;
             color: var(--accent-blue);
@@ -260,6 +261,21 @@ body, html {
             100% { transform: translate(10px, 10px); }
         }
 
+        /* Provide a subtle halo behind hero text for contrast without solid bg */
+        .hero-content {
+            position: relative;
+        }
+        .hero-content::after {
+            content: '';
+            position: absolute;
+            inset: -12px -18px;
+            border-radius: 18px;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0) 75%);
+            filter: blur(10px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .hero-content {
             text-align: center;
             z-index: 10;
@@ -278,7 +294,7 @@ body, html {
         }
 
         .hero-title {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Cinzel', 'Noto Serif JP', serif;
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-red), var(--accent-gold));
@@ -287,6 +303,13 @@ body, html {
             -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
             animation: titleGlow 3s infinite alternate;
+            letter-spacing: 0.06em;
+            -webkit-text-stroke: 2px rgba(0, 0, 0, 0.6);
+            text-shadow:
+                0 2px 0 rgba(0,0,0,0.5),
+                0 4px 12px rgba(0,0,0,0.55),
+                0 0 18px rgba(0,0,0,0.45),
+                0 0 28px rgba(0, 212, 255, 0.25);
         }
 
         @keyframes titleGlow {
@@ -296,9 +319,11 @@ body, html {
 
         .hero-subtitle {
             font-size: 1.5rem;
-            color: var(--text-gray);
+            color: #e8f6ff;
             margin-bottom: 2rem;
             animation: slideUp 1.5s ease-out 0.5s both;
+            font-family: 'Zen Kaku Gothic New', Arial, sans-serif;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.45);
         }
 
         @keyframes slideUp {
