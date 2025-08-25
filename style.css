@@ -380,7 +380,7 @@ body, html {
 
         /* About Section */
         .about {
-            background: var(--secondary-dark);
+            background: transparent;
             margin: 2rem 0;
             border-radius: 20px;
             border: 1px solid rgba(0, 212, 255, 0.2);
@@ -395,14 +395,9 @@ body, html {
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, transparent, var(--accent-blue), transparent);
-            animation: rotate 10s linear infinite;
-            opacity: 0.1;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            background: none;
+            animation: none;
+            opacity: 0;
         }
 
         .about-content {
@@ -776,7 +771,7 @@ body, html {
 
         /* Contact Section */
         .contact {
-            background: var(--secondary-dark);
+            background: transparent;
             margin: 2rem 0;
             border-radius: 20px;
             border: 1px solid rgba(255, 71, 87, 0.2);
