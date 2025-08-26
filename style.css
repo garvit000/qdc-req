@@ -406,7 +406,7 @@ body, html {
         /* About Section */
         .about {
             background: rgba(10, 10, 15, 0.65);
-            margin: 2rem 0;
+            margin: 2rem 0 4rem 0;
             border-radius: 20px;
             border: 1px solid rgba(0, 212, 255, 0.2);
             position: relative;
@@ -495,6 +495,410 @@ body, html {
         @keyframes weaponFloat {
             0% { transform: translateY(0) rotate(0deg); }
             100% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Domains Section */
+        .domains {
+            background: rgba(10, 10, 15, 0.75);
+            margin: 6rem 0;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 5rem 0;
+        }
+
+        .domains-content {
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .domains-subtitle {
+            color: var(--text-gray);
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .domain-card {
+            position: relative;
+            height: 400px;
+            perspective: 1000px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-3d-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .domain-card:hover .card-3d-wrapper {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 15, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 165, 2, 0.15));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transform: rotateY(180deg);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .domain-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-top: auto;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .card-front h4 {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .card-front p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .card-back h4 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 15px var(--glow-blue);
+        }
+
+        .domain-description {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            max-width: 200px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Domain-specific styling */
+        .domain-card.technical .card-front {
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .domain-card.technical:hover .card-front {
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.4);
+        }
+
+        .domain-card.creatives .card-front {
+            border-color: rgba(255, 71, 87, 0.4);
+            box-shadow: 0 0 30px rgba(255, 71, 87, 0.2);
+        }
+
+        .domain-card.creatives:hover .card-front {
+            box-shadow: 0 0 50px rgba(255, 71, 87, 0.4);
+        }
+
+        .domain-card.corporate .card-front {
+            border-color: rgba(255, 165, 2, 0.4);
+            box-shadow: 0 0 30px rgba(255, 165, 2, 0.2);
+        }
+
+        .domain-card.corporate:hover .card-front {
+            box-shadow: 0 0 50px rgba(255, 165, 2, 0.4);
+        }
+
+        .domain-card.pr .card-front {
+            border-color: rgba(138, 43, 226, 0.4);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .domain-card.pr:hover .card-front {
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Card glow effect */
+        .card-glow {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .domain-card:hover .card-glow {
+            opacity: 1;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Floating particles for cards */
+        .domain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .domain-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Responsive design for domain cards */
+        @media (max-width: 1200px) {
+            .domain-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .domains {
+                margin: 2rem 0;
+                padding: 2rem 0;
+            }
+            
+            .domains-content {
+                padding: 0 1.5rem;
+            }
+            
+            .domains-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .domain-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+            
+            .domain-card {
+                height: 350px;
+            }
+            
+            .card-front,
+            .card-back {
+                padding: 1.5rem;
+            }
+            
+            .card-content h4 {
+                font-size: 1.5rem;
+            }
+            
+            .card-back h4 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Enhanced 3D animations for domain cards */
+        .domain-card {
+            animation: cardFloat 6s ease-in-out infinite;
+        }
+
+        .domain-card:nth-child(1) { animation-delay: 0s; }
+        .domain-card:nth-child(2) { animation-delay: 1.5s; }
+        .domain-card:nth-child(3) { animation-delay: 3s; }
+        .domain-card:nth-child(4) { animation-delay: 4.5s; }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            25% { transform: translateY(-5px) rotateX(2deg); }
+            50% { transform: translateY(-10px) rotateX(0deg); }
+            75% { transform: translateY(-5px) rotateX(-2deg); }
+        }
+
+        /* Magnetic hover effect */
+        .domain-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            filter: brightness(1.1);
+        }
+
+        /* Enhanced card transitions */
+        .card-3d-wrapper {
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        filter 0.3s ease;
+        }
+
+        .domain-card:hover .card-3d-wrapper {
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+        }
+
+        /* Skill list animations */
+        .skill-tag {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: skillReveal 0.5s ease forwards;
+        }
+
+        .skill-tag:nth-child(1) { animation-delay: 0.1s; }
+        .skill-tag:nth-child(2) { animation-delay: 0.2s; }
+        .skill-tag:nth-child(3) { animation-delay: 0.3s; }
+        .skill-tag:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes skillReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced glow effects */
+        .domain-card.technical:hover .card-glow {
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            animation: technicalGlow 2s ease-in-out infinite;
+        }
+
+        .domain-card.creatives:hover .card-glow {
+            background: linear-gradient(45deg, transparent, rgba(255, 71, 87, 0.3), transparent);
+            animation: creativesGlow 2s ease-in-out infinite;
+        }
+
+        .domain-card.corporate:hover .card-glow {
+            background: linear-gradient(45deg, transparent, rgba(255, 165, 2, 0.3), transparent);
+            animation: corporateGlow 2s ease-in-out infinite;
+        }
+
+        .domain-card.pr:hover .card-glow {
+            background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.3), transparent);
+            animation: prGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes technicalGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(0, 212, 255, 0.6); }
+        }
+
+        @keyframes creativesGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 71, 87, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(255, 71, 87, 0.6); }
+        }
+
+        @keyframes corporateGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 165, 2, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(255, 165, 2, 0.6); }
+        }
+
+        @keyframes prGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(138, 43, 226, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(138, 43, 226, 0.6); }
         }
 
         /* Timeline Section */
