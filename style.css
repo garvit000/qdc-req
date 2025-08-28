@@ -379,19 +379,22 @@ body, html {
         }
 
         /* Section Styles */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            scroll-margin-top: 100px; /* Account for fixed navbar */
-        }
+        
 
         /* Better spacing between sections */
         .section + .section {
             margin-top: 2rem;
         }
 
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            scroll-margin-top: 100px;
+            text-align: center; /* Center section content by default */
+        }
+        
         .section-title {
             font-family: 'Orbitron', monospace;
             font-size: 3rem;
@@ -405,16 +408,17 @@ body, html {
 
         /* About Section */
         .about {
-            background: rgba(10, 10, 15, 0.65);
-            margin: 2rem 0 4rem 0;
+            background: rgba(10, 10, 15, 0.75);
+            margin: 2rem auto 4rem auto; /* Added auto for horizontal centering */
+            max-width: 1200px; /* Constrain width */
             border-radius: 20px;
             border: 1px solid rgba(0, 212, 255, 0.2);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(8px);
         }
-
+        
         .about::before {
             content: '';
             position: absolute;
@@ -426,33 +430,38 @@ body, html {
             animation: none;
             opacity: 0;
         }
-
+        
         .about-content {
             position: relative;
             z-index: 2;
-            padding: 3rem;
+            padding: 1rem;
+            text-align: center; /* Center the content */
         }
-
+        
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
+            max-width: 1000px; /* Constrain grid width */
+            margin: 0 auto; /* Center the grid */
         }
-
+        
         .about-text {
             font-size: 1.2rem;
             line-height: 1.8;
             color: var(--text-gray);
+            text-align: left; /* Keep text left-aligned for readability */
         }
-
+        
         .about-text h3 {
             color: var(--accent-blue);
             font-size: 2rem;
             margin-bottom: 1rem;
             text-shadow: 0 0 10px var(--glow-blue);
+            text-align: center; /* Center the heading */
         }
-
+        
         .about-visual {
             position: relative;
             height: 300px;
@@ -463,6 +472,7 @@ body, html {
             justify-content: center;
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.06);
+            margin: 0 auto; /* Center the visual */
         }
 
         .about-image {
@@ -500,21 +510,24 @@ body, html {
         /* Domains Section */
         .domains {
             background: rgba(10, 10, 15, 0.75);
-            margin: 6rem 0;
+            margin: 2rem auto; /* Added auto for horizontal centering */
+            max-width: 1200px; /* Constrain width */
             border-radius: 20px;
             border: 1px solid rgba(0, 212, 255, 0.2);
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            padding: 5rem 0;
+            padding: 2rem 0;
         }
-
+        
         .domains-content {
-            padding: 0 3rem;
+            padding: 1rem;
             text-align: center;
+            max-width: 1200px; /* Constrain content width */
+            margin: 0 auto; /* Center the content */
         }
-
+        
         .domains-subtitle {
             color: var(--text-gray);
             font-size: 1.3rem;
@@ -524,13 +537,13 @@ body, html {
             margin-right: auto;
             line-height: 1.6;
         }
-
+        
         .domain-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 3rem;
-            max-width: 1400px;
+            max-width: 1200px; /* Reduced from 1400px for better centering */
             margin-left: auto;
             margin-right: auto;
         }
@@ -539,7 +552,6 @@ body, html {
             position: relative;
             height: 400px;
             perspective: 1000px;
-            cursor: pointer;
             transition: transform 0.3s ease;
         }
 
@@ -1224,18 +1236,22 @@ body, html {
 
         /* Contact Section */
         .contact {
-            background: transparent;
-            margin: 2rem 0;
+            background: rgba(10, 10, 15, 0.75);
+            margin: 2rem auto; /* Added auto for horizontal centering */
+            max-width: 800px; /* Constrain width for better form layout */
             border-radius: 20px;
             border: 1px solid rgba(255, 71, 87, 0.2);
+            padding: 1rem;
             position: relative;
             overflow: hidden;
         }
-
+        
         .contact-form {
             position: relative;
             z-index: 2;
-            padding: 3rem;
+            padding: 2rem;
+            max-width: 1200px; /* Constrain form width */
+            margin: 0 auto; /* Center the form */
         }
 
         .form-group {
